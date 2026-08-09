@@ -3,18 +3,18 @@ class Solution {
         if(s.length()!=t.length()){
             return false;
         }
-       int[] freq=new int[26];
-       for(int i=0;i<s.length();i++){
-        freq[s.charAt(i)-'a']++;
-        freq[t.charAt(i)-'a']--;
-
-       }
-       for(int i=0;i<25;i++){
-        if(freq[i]!=0){
-            return false;
+        int [] count = new int[26];
+        for(char ch:s.toCharArray()){
+            count[ch - 'a']++;
         }
-       }
-
-    return true;
+        for(char ch: t.toCharArray()){
+            count[ch-'a']--;
+        }
+        for(int i=0;i<count.length;i++){
+            if(count[i]!=0){
+                return false;
+            }
+        }
+        return true;
     }
 }
